@@ -1,0 +1,52 @@
+{
+  "name": "alpha-homora-security-tests",
+  "version": "1.0.0",
+  "description": "Live security testing for Alpha Homora flash loan and oracle manipulation vulnerabilities",
+  "scripts": {
+    "test": "hardhat test",
+    "test:oracle": "hardhat test test/OracleManipulation.test.js",
+    "test:rounding": "hardhat test test/RoundingError.test.js",
+    "test:spell": "hardhat test test/CustomSpell.test.js",
+    "test:deviation": "hardhat test test/DeviationBypass.test.js",
+    "test:audit": "node scripts/comprehensive-audit.js",
+    "compile": "hardhat compile",
+    "tenderly:setup": "node scripts/tenderly-setup.js",
+    "tenderly:fork": "node scripts/tenderly-fork.js create",
+    "tenderly:deploy": "node scripts/tenderly-deploy.js",
+    "tenderly:simulate": "node scripts/tenderly-simulate.js",
+    "tenderly:analyze": "node scripts/tenderly-analyze.js",
+    "remix:export": "node scripts/export-for-remix.js",
+    "mainnet:fork": "hardhat node --fork $MAINNET_RPC_URL --fork-block-number $MAINNET_FORK_BLOCK"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
+    "@chainlink/contracts": "^0.8.0",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "dotenv": "^16.0.3",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "hardhat": "^2.19.0",
+    "chai": "^4.3.10",
+    "ethers": "^6.9.0",
+    "solidity-coverage": "^0.8.5",
+    "@tenderly/hardhat-tenderly": "^1.7.0"
+  },
+  "keywords": [
+    "alpha-homora",
+    "alpha-finance",
+    "security",
+    "flash-loan",
+    "oracle-manipulation",
+    "defi",
+    "ethereum",
+    "solidity",
+    "tenderly",
+    "remix",
+    "vulnerability-testing"
+  ]
+}
