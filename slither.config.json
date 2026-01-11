@@ -1,0 +1,37 @@
+{
+  "detectors_to_run": [
+    "reentrancy-eth",
+    "reentrancy-no-eth",
+    "reentrancy-benign",
+    "reentrancy-events",
+    "price-manipulation",
+    "oracle-manipulation",
+    "timestamp",
+    "weak-prng",
+    "suicidal",
+    "uninitialized-state",
+    "uninitialized-storage",
+    "arbitrary-send",
+    "controlled-delegatecall",
+    "delegatecall-loop",
+    "msg-value-loop",
+    "tx-origin"
+  ],
+  "detectors_to_exclude": [],
+  "filter_paths": "lib/|test/|script/",
+  "exclude_dependencies": true,
+  "exclude_informational": false,
+  "exclude_low": false,
+  "exclude_medium": false,
+  "exclude_high": false,
+  "solc_remaps": [
+    "@openzeppelin/=lib/openzeppelin-contracts/",
+    "@uniswap/v2-core/=lib/v2-core/",
+    "@uniswap/v2-periphery/=lib/v2-periphery/",
+    "forge-std/=lib/forge-std/src/"
+  ],
+  "solc_args": "--optimize --optimize-runs 200",
+  "compile_force_framework": "foundry",
+  "generate_patches": true,
+  "triage_mode": false
+}
