@@ -1,0 +1,38 @@
+testMode: assertion
+testLimit: 50000
+timeout: 600
+coverage: true
+corpusDir: "corpus"
+format: text
+quiet: false
+
+# Fuzzing configuration
+shrinkLimit: 5000
+seed: 0
+
+# Coverage options
+coverageFormats:
+  - txt
+  - html
+  - lcov
+
+# Assertion checking
+checkAsserts: true
+cryticArgs: ["--solc-remaps", "@openzeppelin=lib/openzeppelin-contracts"]
+
+# Filter functions to test
+filterFunctions: ["echidna_"]
+filterBlacklist: false
+
+# Deployment configuration
+deployer: "0x30000"
+sender: ["0x10000", "0x20000", "0x30000"]
+balanceAddr: 0xffffffff
+balanceContract: 0
+
+# Multi-ABI support
+multi-abi: true
+
+# Optimization
+optimize: true
+runs: 200
