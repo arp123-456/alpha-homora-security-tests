@@ -1,0 +1,67 @@
+{
+  "name": "LP Oracle Security Scanner",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/rust:1": {}
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "JuanBlanco.solidity",
+        "tintinweb.solidity-visual-auditor",
+        "tintinweb.vscode-solidity-language",
+        "NomicFoundation.hardhat-solidity",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "rust-lang.rust-analyzer",
+        "GitHub.copilot"
+      ],
+      "settings": {
+        "solidity.compileUsingRemoteVersion": "v0.8.20",
+        "solidity.formatter": "forge",
+        "editor.formatOnSave": true,
+        "files.associations": {
+          "*.sol": "solidity"
+        }
+      }
+    }
+  },
+  
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  
+  "remoteUser": "vscode",
+  
+  "mounts": [
+    "source=${localWorkspaceFolder}/.foundry,target=/home/vscode/.foundry,type=bind,consistency=cached"
+  ],
+  
+  "forwardPorts": [8545, 3000],
+  
+  "portsAttributes": {
+    "8545": {
+      "label": "Anvil Local Node",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Web Interface",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
