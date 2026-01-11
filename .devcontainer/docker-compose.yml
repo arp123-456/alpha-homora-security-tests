@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/base:ubuntu
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    environment:
+      - FOUNDRY_PROFILE=default
+      - ECHIDNA_VERSION=latest
+    networks:
+      - security-scanner
+
+  anvil:
+    image: ghcr.io/foundry-rs/foundry:latest
+    command: anvil --host 0.0.0.0 --fork-url ${MAINNET_RPC_URL}
+    ports:
+      - "8545:8545"
+    networks:
+      - security-scanner
+
+  echidna:
+    image: trailofbits/echidna:latest
+    volumes:
+      - ..:/workspace:cached
+    working_dir: /workspace
+    networks:
+      - security-scanner
+
+networks:
+  security-scanner:
+    driver: bridge
